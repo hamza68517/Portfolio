@@ -1381,22 +1381,29 @@
       }
 
       /* ============ TIMELINE: mobile tightening ============ */
-      @media (max-width: 540px) {
-        .timeline-head {
-          gap: 10px;
-        }
-        .timeline-logo {
-          width: 36px;
-          height: 36px;
-        }
-        .timeline-logo img {
-          width: 22px;
-          height: 22px;
-        }
-        .timeline-item h3 {
-          font-size: 17px;
-        }
-      }
+     /* ============ TIMELINE: mobile tightening ============ */
+@media (max-width: 540px) {
+  .timeline-head {
+    gap: 10px;
+  }
+
+  .timeline-logo {
+    width: auto;          /* let it size to the logo's natural width */
+    height: 40px;         /* slightly taller for legibility */
+    max-width: 150px;     /* cap so it doesn't run into the date/text */
+  }
+
+  .timeline-logo img {
+    width: auto;          /* preserve aspect ratio */
+    height: 100%;         /* fill the 40px height */
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  .timeline-item h3 {
+    font-size: 17px;
+  }
+}
       .timeline-item {
         position: relative;
         padding-bottom: 39px;
