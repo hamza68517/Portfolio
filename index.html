@@ -230,13 +230,7 @@
       .art-frame {
         overflow: hidden;
       }
-@media (max-width: 780px) {
-  .header {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background: rgba(45, 48, 43, 0.98);
-  }
-}
+
       /* The big ghost number can overflow between 780px–1000px */
       @media (max-width: 1000px) {
         .section-head-inner:after {
@@ -1304,6 +1298,105 @@
         width: 1px;
         background: var(--line);
       }
+      /* ============ TIMELINE: logo replaces title ============ */
+      .timeline-head {
+        display: flex;
+        align-items: center;
+        margin-bottom: 6px;
+      }
+
+      .timeline-logo {
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-start;
+        max-width: 180px;
+        height: 38px;
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+
+      .timeline-logo img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        display: block;
+      }
+
+      /* Fallback if logo fails to load — shows company name */
+      .timeline-logo.logo-missing {
+        height: auto;
+        max-width: none;
+      }
+      .timeline-logo.logo-missing::after {
+        content: "Isloo Tech";
+        font-family: Arial, sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: -0.025em;
+        color: var(--fg);
+      }
+      /* ============ TIMELINE: visit links ============ */
+      .timeline-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 12px;
+        font-size: 11px;
+        color: var(--sage-light);
+        font-family: Arial, sans-serif;
+        border-bottom: 1px solid transparent;
+        padding-bottom: 2px;
+        transition:
+          color 0.2s ease,
+          border-color 0.2s ease;
+      }
+
+      .timeline-link:hover {
+        color: var(--fg);
+        border-bottom-color: var(--sage);
+      }
+
+      .timeline-link i,
+      .timeline-link svg {
+        transition: transform 0.2s ease;
+      }
+
+      .timeline-link:hover i,
+      .timeline-link:hover svg {
+        transform: translate(2px, -2px);
+      }
+
+      /* Container when there are multiple links */
+      .timeline-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        margin-top: 12px;
+      }
+
+      .timeline-links .timeline-link {
+        margin-top: 0;
+      }
+
+      /* ============ TIMELINE: mobile tightening ============ */
+      @media (max-width: 540px) {
+        .timeline-head {
+          gap: 10px;
+        }
+        .timeline-logo {
+          width: 36px;
+          height: 36px;
+        }
+        .timeline-logo img {
+          width: 22px;
+          height: 22px;
+        }
+        .timeline-item h3 {
+          font-size: 17px;
+        }
+      }
       .timeline-item {
         position: relative;
         padding-bottom: 39px;
@@ -1649,8 +1742,8 @@
           gap: 18px;
         }
         .logo img {
-          height: 65px;
-          max-width: 215px;
+          height: 60px;
+          max-width: 160px;
         }
       }
 
@@ -1893,8 +1986,8 @@
           gap: 8px;
         }
         .logo img {
-          height: 62px;
-          max-width: 204px;
+          height: 42px;
+          max-width: 110px;
         }
         .contact-btn {
           min-height: 34px;
@@ -2558,30 +2651,121 @@
             <article class="timeline-item current reveal">
               <div class="timeline-marker"></div>
               <div class="timeline-date">
-                May 2024 — Present <span>CURRENT</span>
+                June 2024 — Present <span>CURRENT</span>
               </div>
-              <h3>Evertise AI PR</h3>
+              <div class="timeline-head">
+                <span class="timeline-logo timeline-logo-wide">
+                  <img
+                    src="images/evertise.png"
+                    alt="Isloo Tech"
+                    loading="lazy"
+                    onerror="
+                      this.style.display = 'none';
+                      this.parentElement.classList.add('logo-missing');
+                    "
+                  />
+                </span>
+              </div>
               <p class="timeline-role">Junior Frontend & WordPress Developer</p>
               <p class="timeline-description">
                 Live frontend and PHP projects, custom WordPress functionality,
                 Figma and Canva graphic design, and responsive user interfaces.
               </p>
+              <a
+                href="https://evertise.net/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="timeline-link"
+              >
+                evertise.net
+                <i data-lucide="arrow-up-right" width="13"></i>
+              </a>
             </article>
+
             <article class="timeline-item reveal">
               <div class="timeline-marker"></div>
-              <div class="timeline-date">Mar 2023 — Nov 2023</div>
-              <h3>Isloo Tech</h3>
+              <div class="timeline-date">Jul 2023 — Jan 2024</div>
+              <div class="timeline-head">
+                <span class="timeline-logo timeline-logo-wide">
+                  <img
+                    src="images/isloo.png"
+                    alt="Isloo Tech"
+                    loading="lazy"
+                    onerror="
+                      this.style.display = 'none';
+                      this.parentElement.classList.add('logo-missing');
+                    "
+                  />
+                </span>
+              </div>
               <p class="timeline-role">Junior Laravel Developer</p>
               <p class="timeline-description">
                 Frontend work with HTML, CSS, and JavaScript; basic PHP and SQL
                 backend tasks. Contributed to live projects including CRM and J7
                 Globals.
               </p>
+              <div class="timeline-links">
+                <a
+                  href="https://islootech.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="timeline-link"
+                >
+                  isloo.tech
+                  <i data-lucide="arrow-up-right" width="13"></i>
+                </a>
+                <a
+                  href="https://radissonbluislamabad.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="timeline-link"
+                >
+                  RadissonBluIslamabad.com
+                  <i data-lucide="arrow-up-right" width="13"></i>
+                </a>
+              </div>
             </article>
             <article class="timeline-item reveal">
               <div class="timeline-marker"></div>
+              <div class="timeline-date">April 2023 — June 2023</div>
+              <div class="timeline-head">
+                <span class="timeline-logo timeline-logo-wide">
+                  <img
+                    src="images/Khastech Solutions.png"
+                    alt="Isloo Tech"
+                    loading="lazy"
+                    onerror="
+                      this.style.display = 'none';
+                      this.parentElement.classList.add('logo-missing');
+                    "
+                  />
+                </span>
+              </div>
+              <p class="timeline-role">Web Developer Intern</p>
+              <p class="timeline-description">
+                Worked as a Web Development Intern at Khastech Solutions,
+                gaining hands-on experience in HTML, CSS, and JavaScript, with
+                foundational knowledge of PHP and SQL.
+              </p>
+              <div class="timeline-links">
+                <a
+                  href="https://khastech.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="timeline-link"
+                >
+                  Khas Tech Solutions
+                  <i data-lucide="arrow-up-right" width="13"></i>
+                </a>
+              </div>
+            </article>
+
+            <article class="timeline-item reveal">
+              <div class="timeline-marker"></div>
               <div class="timeline-date">Ongoing</div>
-              <h3>Independent projects & learning</h3>
+              <div class="timeline-head">
+                <h3>Independent projects & learning</h3>
+              </div>
               <p class="timeline-role">
                 Continuous learning & hands-on practice
               </p>
